@@ -67,9 +67,8 @@ const Home = () => {
   return (
     <div className="bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white ">
       <NavbarHome />
-      <div className="flex ">
-        <Sidebar />
-        <div className="flex flex-col ">
+      
+        <div className="flex flex-col h-screen">
           <ArtistContainer>
             {artists != null ? (
               artists.map((artist) => (
@@ -86,11 +85,11 @@ const Home = () => {
                 <Song artist={song.artist} song={song.name} imagen={song.img} />
               ))
             ) : (
-              <p>Loading...</p>
+              <p className="animate-ping">Loading...</p>
             )}
           </SongContainer>
         </div>
-      </div>
+      
     </div>
   );
 };

@@ -16,8 +16,8 @@ const Navbar = () => {
             <p className='w-full text-3xl font-bold text-white'>mix</p>
         </div>
         <ul className='hidden md:flex '>
-            <li className='p-8'>About</li>
-            <li className='p-8'>Contact</li>
+            <li className='p-8 cursor-pointer'>About</li>
+            <li className='p-8 cursor-pointer'>Contact</li>
         
         </ul>
 
@@ -33,8 +33,8 @@ const Navbar = () => {
                 <p className='w-full text-3xl font-bold text-white'>mix</p>
             </div>
             <ul className='p-5'>
-                <li className='p-8 border-b'>About</li>
-                <li className='p-8 border-b'>Contact</li>
+                <li className='p-8 border-b cursor-pointer'>About</li>
+                <li className='p-8 border-b cursor-pointer'>Contact</li>
                 
             </ul>
         </div>

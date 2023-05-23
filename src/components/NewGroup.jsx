@@ -13,10 +13,10 @@ import Group from './Group'
 
 const Home = () => {
   return (
-    <div className='bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white '>
+    <div className='bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white h-screen'>
       <NavbarHome />
     <div className='flex'>
-      <Sidebar />
+      
       <GroupsContainer>
     
       </GroupsContainer>

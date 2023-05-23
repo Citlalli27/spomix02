@@ -31,11 +31,11 @@ const Landingbody = () => {
           <p className="md:text-3xl sm:text-2xl text-1xl font-bold"> to use.</p>
         </div>
         <p className="md:text-2xl text-1xl font-bold text-gray-400">
-          Login with your Spotify account
+          Log in with your Spotify account
         </p>
         <a href="http://127.0.0.1:5000/login">
           <button className="bg-rose-500 w-[200px] rounded-md font-medium my-6 mx-auto py-3">
-            Login
+            Log In
           </button>
         </a>
       </div>
