@@ -22,8 +22,12 @@ const Navbar = () => {
     <ul className='hidden md:flex '>
         <li className='p-8 cursor-pointer' onClick={() => navigate("/home")}>Home</li>
         <li className='p-8 cursor-pointer'  onClick={() => navigate("/newgroup")}>Groups</li>
-        <li className='p-8 cursor-pointer bg-rose-500'>Contact</li>
-        
+        <li className='p-8 cursor-pointer'  onClick={() => navigate("/creategroup")}>New Group</li>
+        <li className='p-8'>
+      <button className='bg-rose-500 px-4 py-2 rounded-md text-white'>
+        Contact
+      </button>
+    </li>
     </ul>
 
     {/* Icono de barra lateral */}
