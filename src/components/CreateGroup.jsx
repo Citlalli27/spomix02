@@ -35,12 +35,7 @@ const CreateGroup = () => {
             <div className='bg-indigo-600'>
               <p className='text-center m-5'>New Group</p>
 
-              <div class="flex items-center justify-center bg-green-500 text-white py-2 px-4 rounded-md">
-  <span class="mr-2">Link copied!</span>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-  </svg>
-</div>
+            
 
               <div>
 
