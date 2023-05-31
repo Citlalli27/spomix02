@@ -33,7 +33,7 @@ const Landingbody = () => {
         <p className="md:text-2xl text-1xl font-bold text-gray-400">
           Log in with your Spotify account
         </p>
-        <a href="http://127.0.0.1:5000/login">
+        <a href="http://localhost:5000/login">
           <button className="bg-rose-500 w-[200px] rounded-md font-medium my-6 mx-auto py-3">
             Log In
           </button>
