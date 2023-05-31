@@ -65,33 +65,30 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white h-screen">
+    <div className="bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white ">
       <NavbarHome />
-      
-        <div className="flex flex-col ">
-          <ArtistContainer>
-            
-            {artists != null ? (
-              artists.map((artist) => (
-                <Artist name={artist.name} imagen={artist.img} />
-              ))
-            ) : (
-             
-              <p className="animate-ping">Loading...</p>
-            )}
-          </ArtistContainer>
 
-          <SongContainer>
-            {songs != null ? (
-              songs.map((song) => (
-                <Song artist={song.artist} song={song.name} imagen={song.img} />
-              ))
-            ) : (
-              <p className="animate-ping">Loading...</p>
-            )}
-          </SongContainer>
-        </div>
-      
+      <div className="flex flex-col ">
+        <ArtistContainer>
+          {artists != null ? (
+            artists.map((artist) => (
+              <Artist name={artist.name} imagen={artist.img} />
+            ))
+          ) : (
+            <p className="animate-ping">Loading...</p>
+          )}
+        </ArtistContainer>
+
+        <SongContainer>
+          {songs != null ? (
+            songs.map((song) => (
+              <Song artist={song.artist} song={song.name} imagen={song.img} />
+            ))
+          ) : (
+            <p className="animate-ping">Loading...</p>
+          )}
+        </SongContainer>
+      </div>
     </div>
   );
 };
