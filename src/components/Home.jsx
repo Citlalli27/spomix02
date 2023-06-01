@@ -8,12 +8,14 @@ import dataSong from "../song.json";
 import NavbarHome from "./NavbarHome";
 import Sidebar from "./Sidebar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
 const Home = () => {
-  const [artists, setArtists] = useState(null);
-  const [songs, setSongs] = useState(null);
+  const [artists, setArtists] = useState();
+  const [songs, setSongs] = useState();
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -22,8 +24,13 @@ const Home = () => {
     ) {
       const UI = new URL(window.location.href).searchParams.get("UI");
       const AT = new URL(window.location.href).searchParams.get("AT");
-      localStorage.setItem("UI", UI);
-      localStorage.setItem("AT", AT);
+
+      if (UI == null || AT == null) {
+        navigate("/");
+      } else {
+        localStorage.setItem("UI", UI);
+        localStorage.setItem("AT", AT);
+      }
     }
 
     getArtists(localStorage.getItem("AT"));
@@ -72,7 +79,7 @@ const Home = () => {
         <ArtistContainer>
           {artists != null ? (
             artists.map((artist) => (
-              <Artist name={artist.name} imagen={artist.img} />
+              <Artist name={artist.name} imagen={artist.img} key={artist.id} />
             ))
           ) : (
             <p className="animate-ping">Loading...</p>
@@ -80,9 +87,15 @@ const Home = () => {
         </ArtistContainer>
 
         <SongContainer>
+          {console.log(songs)}
           {songs != null ? (
             songs.map((song) => (
-              <Song artist={song.artist} song={song.name} imagen={song.img} />
+              <Song
+                artist={song.artist}
+                song={song.name}
+                imagen={song.img}
+                key={song.id}
+              />
             ))
           ) : (
             <p className="animate-ping">Loading...</p>

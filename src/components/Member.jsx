@@ -1,13 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Member = () => {
+const Member = (props) => {
   return (
     <div class="text-center flex gap-3 bg-orange-500 m-2">
-        <img src="https://tecdn.b-cdn.net/img/new/avatars/5.webp"
-        class="mb-2 w-20  rounded-full shadow-lg "/>
-        <h5 class="mb-2 self-center">John Doe</h5>
+      <img src={props.img} class="mb-2 w-20  rounded-full shadow-lg " />
+      <h5 class="mb-2 self-center">{props.name}</h5>
     </div>
-  )
-}
+  );
+};
 
-export default Member
+export default Member;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Group from "./Group";
 import { IoIosAddCircle } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import dataGroup from "../groups.json";
 
 import axios from "axios";
 
@@ -25,7 +26,7 @@ const GroupsContainer = () => {
       .get("http://127.0.0.1:5000/groups/create", config)
       .then((response) => {
         console.log(response.data);
-        const groupId = response.data.groupId;
+        const groupId = response.data;
         navigate("/createGroup?id=" + groupId);
       })
       .catch((error) => {
@@ -50,9 +51,9 @@ const GroupsContainer = () => {
       });
   };
   return (
-    <div className="">
+    <div className="bg-[#2d2965]">
       <div className="">
-        <h1 className="text-w font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 md:text-left text-center">
+        <h1 className="text-w font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 m-5 md:text-left text-center">
           MY GROUPS
         </h1>
         <div className="bg-black flex flex-col">
@@ -80,15 +81,14 @@ const GroupsContainer = () => {
         </div>
       </div>
 
-      <div className="flex  flex-wrap justify-center gap-10">
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
+      <div className="flex">
+        {dataGroup.map((group) => (
+          <Group
+            name={group.name}
+            genre={group.genre}
+            members={group.members}
+          />
+        ))}
       </div>
     </div>
   );
