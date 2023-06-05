@@ -33,20 +33,21 @@ const Home = () => {
       }
     }
 
-    getArtists(localStorage.getItem("AT"));
-    getSongs(localStorage.getItem("AT"));
+    getArtists();
+    getSongs();
   }, []);
 
-  const getArtists = (AT) => {
+  const getArtists = () => {
     let config = {
       headers: {
-        AT: AT,
+        AT: localStorage.getItem("AT"),
+        UI: localStorage.getItem("UI"),
       },
     };
     axios
       .get("http://127.0.0.1:5000/me/artists", config)
       .then((response) => {
-        console.log(response.data);
+        console.log("Artists", response.data);
         setArtists(response.data);
       })
       .catch((error) => {
@@ -54,16 +55,17 @@ const Home = () => {
       });
   };
 
-  const getSongs = (AT) => {
+  const getSongs = () => {
     let config = {
       headers: {
-        AT: AT,
+        AT: localStorage.getItem("AT"),
+        UI: localStorage.getItem("UI"),
       },
     };
     axios
       .get("http://127.0.0.1:5000/me/tracks", config)
       .then((response) => {
-        console.log("Songs", response.data);
+        console.log("Tracks", response.data);
         setSongs(response.data);
       })
       .catch((error) => {
@@ -87,7 +89,6 @@ const Home = () => {
         </ArtistContainer>
 
         <SongContainer>
-          {console.log(songs)}
           {songs != null ? (
             songs.map((song) => (
               <Song

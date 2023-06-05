@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const ItemPL = () => {
+const ItemPL = (props) => {
   return (
-    <div class="text-center flex  bg-orange-500 m-3">
-    <img
-        src="https://tecdn.b-cdn.net/img/new/avatars/5.webp"
-        class=" w-20 shadow-lg "/>
-        <div className='flex flex-col p-2'>
-            <h5 class="mb-2 self-center font-bold">John Doe</h5>
-            <h5 class="mb-2 self-center">John Doe</h5>
-        </div>
+    <div className=" flex  bg-orange-500 m-3">
+      <img src={props.img} className=" w-20 shadow-lg " />
+      <div className="flex flex-col justify-start p-2">
+        <h5 className="mb-2 font-bold"> {props.name}</h5>
+        <h5 className="mb-2 ">{props.artist}</h5>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ItemPL
+export default ItemPL;

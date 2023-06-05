@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Group from "./Group";
 import { IoIosAddCircle } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,29 @@ import dataGroup from "../groups.json";
 import axios from "axios";
 
 const GroupsContainer = () => {
+  const [myGroups, setMyGroups] = useState();
+  useEffect(() => {
+    getMyGroups();
+  }, []);
+
+  const getMyGroups = () => {
+    let config = {
+      headers: {
+        AT: localStorage.getItem("AT"),
+        UI: localStorage.getItem("UI"),
+      },
+    };
+    axios
+      .get("http://127.0.0.1:5000/groups/mine", config)
+      .then((response) => {
+        console.log(response.data);
+        setMyGroups(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   let navigate = useNavigate();
 
   const [groupIdJoin, setGroupIdJoin] = useState("");
@@ -82,13 +105,18 @@ const GroupsContainer = () => {
       </div>
 
       <div className="flex">
-        {dataGroup.map((group) => (
-          <Group
-            name={group.name}
-            genre={group.genre}
-            members={group.members}
-          />
-        ))}
+        {myGroups != null ? (
+          myGroups.map((group) => (
+            <Group
+              name={group.name}
+              genre={group.genre}
+              members={group.profiles}
+              id={group.id}
+            />
+          ))
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
     </div>
   );
