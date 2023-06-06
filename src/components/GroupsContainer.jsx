@@ -75,36 +75,41 @@ const GroupsContainer = () => {
   };
   return (
     <div className="bg-[#2d2965]">
-      <div className="">
-        <h1 className="text-w font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 m-5 md:text-left text-center">
+      <div className="bg-rose-500/90">
+        <h1 className="text-white font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 md:text-left text-center">
           MY GROUPS
         </h1>
-        <div className="bg-black flex flex-col">
+        </div>
+        <div className="place-content-center flex flex-wrap p-3 gap-5 text-white m-8">
+          <p className="mt-1">Click if you want to create a new group</p>
           <button
-            className="bg-red-500 px-4 py-2 rounded-md w-36 m-5"
+            className="bg-red-500 px-4 py-2 rounded-md w-36 "
             onClick={() => createGroup()}
           >
             {" "}
-            CREATE GROUP
+            Create Group
           </button>
-          <div className="flex">
+          <p className="mt-1">Or join to a group pasting the group id</p>
+          <div className="flex gap-4">
+            
+           
             <input
               value={groupIdJoin}
-              className="text-black"
+              className="text-black bg-gray-100 rounded "
               onChange={handleIdChange}
             />
-            <button
-              className="bg-red-500 px-4 py-2 rounded-md "
+             <button
+              className="bg-red-500 px-4 py-2 rounded-md w-36  "
               onClick={() => joinGroup()}
             >
               {" "}
-              JOIN GROUP
+              Join Group
             </button>
           </div>
-        </div>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-col">
+        <div className="flex flex-wrap sm:flex-wrap  justify-center gap-10 group mb-12">
         {myGroups != null ? (
           myGroups.map((group) => (
             <Group
@@ -115,8 +120,10 @@ const GroupsContainer = () => {
             />
           ))
         ) : (
-          <p>Loading</p>
+          <p className="text-white animate-ping">Loading...</p>
         )}
+        </div>
+       
       </div>
     </div>
   );

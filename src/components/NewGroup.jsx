@@ -6,8 +6,7 @@ import Group from "./Group";
 const Home = () => {
   return (
     <div className="bg-[#2d2965]  text-black  w-full">
-      <NavbarHome />
-      algo
+      <NavbarHome/>
       <GroupsContainer />
     </div>
   );

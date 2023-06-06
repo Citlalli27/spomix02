@@ -5,13 +5,13 @@ const Group = (props) => {
   let navigate = useNavigate();
 
   return (
-    <div className="max-w-sm p-6 bg-rose-500 border border-gray-200 rounded-lg shadow ">
-      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+    <div className="bg-white/10 text-gray-300 group-hover:scale-[0.85] hover:!scale-100 duration-200 md:w-1/4 sm:w-1/4 w-100 p-8 rounded-xl cursor-pointer ">
+      <h4 className="uppercase text-xl font-semibold">
         {props.name}
-      </h5>
-      <p className="mb-3 font-medium text-gray-700 ">{props.genre}</p>
-      <p className="mb-3 text-xs text-gray-700 ">{props.id}</p>
-
+      </h4>
+      <p className="mt-4 text-gray-300	 ">Group Id</p>
+      <p className="mt-1 text-xs ¿ ">{props.id}</p>
+      <p className="mb-4 mt-4">Members</p>
       {props.members != null ? (
         props.members.map((member) => (
           <div className="flex align-middle mb-4">
@@ -19,35 +19,24 @@ const Group = (props) => {
               src={member.images[0].url}
               className="w-6 h-6 mr-2 align-middle rounded-full rounded-full shadow-lg "
             />
-            <p className=" font-normal  text-gray-700 ">
+            <p className=" font-normal   ">
               {member.display_name}
             </p>
           </div>
         ))
       ) : (
-        <p className="mb-3 font-normal text-gray-700 ">Loading...</p>
+        <p className="mb-3 font-normal  ">Loading...</p>
       )}
 
-      <a
+      <button 
+        className="py-2.5 px-8 rounded-xl flex justify-center items-center mx-auto bg-indigo-900 text-white hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-white"
         onClick={() => navigate("/createGroup?id=" + props.id)}
         href="#"
-        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        
       >
-        Visit
-        <svg
-          aria-hidden="true"
-          className="w-4 h-4 ml-2 -mr-1"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-      </a>
+       Details
+        
+      </button>
     </div>
   );
 };
