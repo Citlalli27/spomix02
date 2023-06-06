@@ -64,16 +64,33 @@ const CreateGroup = () => {
         console.log(error);
       });
   };
+
+  const addPlaylist = () => {
+    let config = {
+      headers: {
+        AT: localStorage.getItem("AT"),
+        UI: localStorage.getItem("UI"),
+      },
+    };
+    axios
+      .get("http://127.0.0.1:5000/groups/add/playlist?groupid=" + id, config)
+      .then((response) => {
+        console.log("Adding Playlist", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <div className="bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white h-screen">
+    <div className="text-white bg-gradient-to-b from-indigo-900 to-rose-500 ">
       <Navbar />
-      <div className="bg-gradient-to-r from-[#2d2965] via-[#4b477f] to-rose-500 text-white ">
-        <h1 className="text-w font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 md:text-left text-center">
+      <div className="flex justify-center text-white  ">
+        <h1 className="text-w font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 md:text-left text-center uppercase">
           {group != null ? <>{group.name}</> : <>Loading</>}
         </h1>
       </div>
-      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 bg-gray-200 ">
-        <div className="bg-indigo-400 ml-5 mr-5">
+      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 ">
+        <div className=" ml-5 mr-5">
           <p className="text-center m-5">Members</p>
           {group != null ? (
             group.profiles.map((profile) => {
@@ -89,7 +106,7 @@ const CreateGroup = () => {
           )}
         </div>
 
-        <div className="bg-gray-200">
+        <div className="bg-gray-900">
           <div className="m-5 w-1/2">
             <label
               htmlFor="first_name"
@@ -146,27 +163,33 @@ const CreateGroup = () => {
           >
             Create Playlist
           </button>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-5 border border-blue-700 rounded">
-            Save Changes
+        </div>
+      </div>
+      <div className=" bg-indigo-950 rounded p-2 m-3 md:w-1/2">
+        <div className="flex ">
+          <p className="text-center p-3 m-5">Playlist</p>
+          <button
+            onClick={() => addPlaylist()}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-5 border border-blue-700 rounded justify-self-end"
+          >
+            Add to Spotify
           </button>
         </div>
-        <div className="bg-indigo-800 ml-5 mr-5">
-          <p className="text-center m-5">Playlist</p>
-          {group != null && group.playlist != null ? (
-            group.playlist.map((song) => {
-              return (
-                <ItemPL
-                  img={song.img}
-                  artist={song.artist}
-                  name={song.name}
-                  key={song.id}
-                />
-              );
-            })
-          ) : (
-            <p>Create your first playlist</p>
-          )}
-        </div>
+
+        {group != null && group.playlist != null ? (
+          group.playlist.map((song) => {
+            return (
+              <ItemPL
+                img={song.img}
+                artist={song.artist}
+                name={song.name}
+                key={song.id}
+              />
+            );
+          })
+        ) : (
+          <p>Create your first playlist</p>
+        )}
       </div>
     </div>
   );
