@@ -89,7 +89,75 @@ const CreateGroup = () => {
           {group != null ? <>{group.name}</> : <>Loading</>}
         </h1>
       </div>
-      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 ">
+      <div className="  bg-indigo-950 rounded p-2 m-3 flex items-center justify-center">
+        <div className="flex flex-wrap ">
+        <div className="m-5">
+            <label className="block mb-2 text-sm font-medium text-center "
+            >
+              Group Code
+            </label>
+            <input
+              type="text"
+              className="bg-gray-300 w-full border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 cursor-not-allowed "
+              placeholder="Group Name"
+              value={group != null ? id : "Loading"}
+              disabled
+            />
+          </div>
+
+          <div className="m-5 max-w-full">
+            <label
+              htmlFor="first_name"
+              className="block mb-2 text-sm font-medium text-center "
+            >
+              Group Name
+            </label>
+            <input
+              type="text"
+              className="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 cursor-not-allowed "
+              placeholder="Group Name"
+              value={group != null ? group.name : "Loading"}
+            />
+          </div>
+
+          <div className="m-5">
+            <label
+              className="block mb-2 text-sm font-medium text-center "
+            >
+              Select a Genre
+            </label>
+
+            <select
+              value={genre}
+              onChange={(e) => handleGenreChange(e)}
+              className="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 "
+            >
+              <option value="Hip Hop">Hip Hop</option>
+              <option value="Rock">Rock</option>
+              <option value="Reggaeton">Reggaeton</option>
+              <option value="Pop">Pop</option>
+            </select>
+          </div>
+          <div className="m-5">
+          <label
+              className="block  text-sm font-medium text-center "
+            >
+              Create Playlist
+            </label>
+          <button
+            className="bg-indigo-900 text-white hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-white font-bold py-2 px-4 mt-2 border rounded"
+            onClick={() => createPlaylist()}
+          >
+            Create 
+          </button>
+
+          </div>
+        
+
+        </div>
+          
+        </div>
+      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 bg-black ">
         <div className=" ml-5 mr-5">
           <p className="text-center m-5">Members</p>
           {group != null ? (
@@ -106,64 +174,7 @@ const CreateGroup = () => {
           )}
         </div>
 
-        <div className="bg-gray-900">
-          <div className="m-5 w-1/2">
-            <label
-              htmlFor="first_name"
-              className="block mb-2 text-sm font-medium "
-            >
-              Group Code
-            </label>
-            <input
-              type="text"
-              className="bg-gray-500 border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 cursor-not-allowed "
-              placeholder="Group Name"
-              value={group != null ? id : "Loading"}
-              disabled
-            />
-          </div>
-
-          <div className="m-5 w-1/2">
-            <label
-              htmlFor="first_name"
-              className="block mb-2 text-sm font-medium "
-            >
-              Group Name
-            </label>
-            <input
-              type="text"
-              className="bg-gray-500 border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 "
-              placeholder="Group Name"
-              value={group != null ? group.name : "Loading"}
-            />
-          </div>
-
-          <div className="ml-5 mr-5">
-            <label
-              htmlFor="first_name"
-              className="block mb-2 text-sm font-medium "
-            >
-              Select a Genre
-            </label>
-
-            <select
-              value={genre}
-              onChange={(e) => handleGenreChange(e)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block  p-2.5 "
-            >
-              <option value="Hip Hop">Hip Hop</option>
-              <option value="Rock">Rock</option>
-              <option value="Reggaeton">Reggaeton</option>
-              <option value="Pop">Pop</option>
-            </select>
-          </div>
-          <button
-            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 m-5 border border-orange-700 rounded"
-            onClick={() => createPlaylist()}
-          >
-            Create Playlist
-          </button>
-        </div>
+       
       </div>
       <div className=" bg-indigo-950 rounded p-2 m-3 md:w-1/2">
         <div className="flex ">
@@ -188,7 +199,7 @@ const CreateGroup = () => {
             );
           })
         ) : (
-          <p>Create your first playlist</p>
+          <p className="text-center m-4">Create your first playlist!</p>
         )}
       </div>
     </div>
