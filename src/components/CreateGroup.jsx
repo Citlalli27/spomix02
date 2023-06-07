@@ -89,7 +89,7 @@ const CreateGroup = () => {
           {group != null ? <>{group.name}</> : <>Loading</>}
         </h1>
       </div>
-      <div className="  bg-indigo-950 rounded p-2 m-3 flex items-center justify-center">
+      <div className="  bg-indigo-950 rounded-md p-2 m-3 flex items-center justify-center">
         <div className="flex flex-wrap ">
         <div className="m-5">
             <label className="block mb-2 text-sm font-medium text-center "
@@ -145,7 +145,7 @@ const CreateGroup = () => {
               Create Playlist
             </label>
           <button
-            className="bg-indigo-900 text-white hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-white font-bold py-2 px-4 mt-2 border rounded"
+            className="bg-indigo-900 text-white hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-white font-semibold py-2 px-4 mt-3 ml-2 text-sm rounded"
             onClick={() => createPlaylist()}
           >
             Create 
@@ -157,8 +157,9 @@ const CreateGroup = () => {
         </div>
           
         </div>
-      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 bg-black ">
-        <div className=" ml-5 mr-5">
+      <div className=" flex flex-col md:flex-row sm:flex-row gap-1 m-5">
+        
+        <div className=" p-2 m-3 rounded-xl bg-indigo-950 md:w-1/3">
           <p className="text-center m-5">Members</p>
           {group != null ? (
             group.profiles.map((profile) => {
@@ -170,18 +171,16 @@ const CreateGroup = () => {
               );
             })
           ) : (
-            <p>Loading</p>
+            <p className="animate-ping">Loading...</p>
           )}
         </div>
 
-       
-      </div>
-      <div className=" bg-indigo-950 rounded p-2 m-3 md:w-1/2">
-        <div className="flex ">
-          <p className="text-center p-3 m-5">Playlist</p>
+        <div className=" bg-indigo-950 rounded-xl p-2 m-3 md:w-full">
+        <div className="flex items-center justify-center ">
+          <p className="text-center p-3 m-5 font-semibold">Playlist</p>
           <button
             onClick={() => addPlaylist()}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-5 border border-blue-700 rounded justify-self-end"
+            className="bg-indigo-900 text-white hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-white font-semibold py-2 px-4 mt-2 rounded text-sm "
           >
             Add to Spotify
           </button>
@@ -199,9 +198,13 @@ const CreateGroup = () => {
             );
           })
         ) : (
-          <p className="text-center m-4">Create your first playlist!</p>
+          <p className="text-center m-4 animate-bounce">Create your first playlist!</p>
         )}
       </div>
+
+       
+      </div>
+      
     </div>
   );
 };
