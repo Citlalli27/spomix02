@@ -45,7 +45,7 @@ const Home = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/me/artists", config)
+      .get(process.env.REACT_APP_SERVER_URI + "/me/artists", config)
       .then((response) => {
         console.log("Artists", response.data);
         setArtists(response.data);
@@ -63,7 +63,7 @@ const Home = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/me/tracks", config)
+      .get(process.env.REACT_APP_SERVER_URI + "/me/tracks", config)
       .then((response) => {
         console.log("Tracks", response.data);
         setSongs(response.data);

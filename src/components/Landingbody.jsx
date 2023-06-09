@@ -33,7 +33,7 @@ const Landingbody = () => {
         <p className="md:text-2xl text-1xl font-bold text-gray-400">
           Log in with your Spotify account
         </p>
-        <a href="http://localhost:5000/login">
+        <a href={process.env.REACT_APP_SERVER_URI + "/login"}>
           <button className="bg-rose-500 w-[200px] rounded-md font-medium my-6 mx-auto py-3">
             Log In
           </button>

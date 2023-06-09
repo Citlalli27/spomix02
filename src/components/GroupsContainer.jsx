@@ -22,7 +22,7 @@ const GroupsContainer = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/groups/mine", config)
+      .get(process.env.REACT_APP_SERVER_URI + "/groups/mine", config)
       .then((response) => {
         console.log(response.data);
         setMyGroups(response.data);
@@ -48,7 +48,7 @@ const GroupsContainer = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/groups/create", config)
+      .get(process.env.REACT_APP_SERVER_URI + "/groups/create", config)
       .then((response) => {
         console.log(response.data);
         const groupId = response.data;
@@ -89,7 +89,10 @@ const GroupsContainer = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/groups/join?id=" + groupIdJoin, config)
+      .get(
+        process.env.REACT_APP_SERVER_URI + "/groups/join?id=" + groupIdJoin,
+        config
+      )
       .then((response) => {
         console.log(response.data);
         const groupId = response.data;

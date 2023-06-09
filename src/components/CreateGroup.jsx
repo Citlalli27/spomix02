@@ -39,7 +39,7 @@ const CreateGroup = () => {
       },
     };
     axios
-      .get("http://127.0.0.1:5000/groups/group?id=" + id, config)
+      .get(process.env.REACT_APP_SERVER_URI + "/groups/group?id=" + id, config)
       .then((response) => {
         console.log("Group", response.data);
         setGroup(response.data);
@@ -59,7 +59,8 @@ const CreateGroup = () => {
     };
     axios
       .get(
-        "http://127.0.0.1:5000/groups/recommendations?id=" +
+        process.env.REACT_APP_SERVER_URI +
+          "/groups/recommendations?id=" +
           id +
           "&genre=" +
           genre,
@@ -93,7 +94,8 @@ const CreateGroup = () => {
     };
     axios
       .get(
-        "http://127.0.0.1:5000/groups/add/playlist?groupid=" +
+        process.env.REACT_APP_SERVER_URI +
+          "/groups/add/playlist?groupid=" +
           id +
           "&name=" +
           playlistName,
