@@ -3,6 +3,8 @@ import Group from "./Group";
 import { IoIosAddCircle } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import dataGroup from "../groups.json";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 
@@ -50,9 +52,31 @@ const GroupsContainer = () => {
       .then((response) => {
         console.log(response.data);
         const groupId = response.data;
-        navigate("/createGroup?id=" + groupId);
+        toast.success("👌 Group created successfully!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/createGroup?id=" + groupId);
+        }, 2500);
       })
       .catch((error) => {
+        toast.error("😕 Ups, something went wrong. Please try again.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+        });
         console.log(error);
       });
   };
@@ -68,14 +92,49 @@ const GroupsContainer = () => {
       .get("http://127.0.0.1:5000/groups/join?id=" + groupIdJoin, config)
       .then((response) => {
         console.log(response.data);
-        navigate("/createGroup?id=" + groupIdJoin);
+        const groupId = response.data;
+        toast.success("🙌 Now you're part of the group!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/createGroup?id=" + groupIdJoin);
+        }, 2500);
       })
       .catch((error) => {
+        toast.error("😕 Ups, something went wrong. Please try again.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+        });
         console.log(error.response.status, error.response.data);
       });
   };
   return (
     <div className="bg-[#2d2965]">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+      />
       <div className="bg-rose-500">
         <h1 className="text-white font-bold md:text-7xl sm:text-6xl text-5xl py-16 px-32 md:text-left text-center">
           MY GROUPS
