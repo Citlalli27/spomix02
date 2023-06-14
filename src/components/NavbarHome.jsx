@@ -85,7 +85,7 @@ const Navbar = () => {
                 className="block py-2 pl-3 pr-4 text-white rounded bg-transparent hover:text-rose-500 md:p-0"
                 onClick={() => navigate("/newgroup")}
               >
-                My Group
+                My Groups
               </a>
             </li>
           </ul>
