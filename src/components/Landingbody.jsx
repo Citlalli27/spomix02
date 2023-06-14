@@ -5,11 +5,10 @@ import { useCookies } from 'react-cookie';
 
 const Landingbody = () => {
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(['cookieName']);
+  const [cookies, setCookie] = useCookies(['accessToken']);
 
-  const handleLogin = () => {
-    setCookie('cookieName', 'cookieValue'); // Reemplaza 'cookieName' y 'cookieValue' con los nombres y valores de tus cookies
-   
+   const handleLogin = () => {
+    setCookie('accessToken', 'tokenValue'); // Reemplaza 'tokenValue' con el valor de tu token de acceso
   };
 
   return (
