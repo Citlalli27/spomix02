@@ -9,8 +9,19 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const GroupsContainer = () => {
+  const navigate = useNavigate();
+
   const [myGroups, setMyGroups] = useState();
+
   useEffect(() => {
+    if (
+      localStorage.getItem("UI") == null ||
+      localStorage.getItem("AT") == null
+    ) {
+      setTimeout(() => {
+        return navigate("/");
+      }, 1000);
+    }
     getMyGroups();
   }, []);
 
@@ -31,8 +42,6 @@ const GroupsContainer = () => {
         console.log(error);
       });
   };
-
-  let navigate = useNavigate();
 
   const [groupIdJoin, setGroupIdJoin] = useState("");
 
