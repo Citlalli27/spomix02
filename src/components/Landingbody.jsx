@@ -1,9 +1,16 @@
 import React from "react";
 import Typed from "react-typed";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 const Landingbody = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['cookieName']);
+
+  const handleLogin = () => {
+    setCookie('cookieName', 'cookieValue'); // Reemplaza 'cookieName' y 'cookieValue' con los nombres y valores de tus cookies
+   
+  };
 
   return (
     <div className="text-white ">
@@ -34,7 +41,8 @@ const Landingbody = () => {
           Log in with your Spotify account
         </p>
         <a href={process.env.REACT_APP_SERVER_URI + "/login"}>
-          <button className="bg-rose-500 w-[200px] rounded-md font-medium my-6 mx-auto py-3">
+          <button className="bg-rose-500 w-[200px] rounded-md font-medium my-6 mx-auto py-3"
+             onClick={handleLogin}>
             Log In
           </button>
         </a>
