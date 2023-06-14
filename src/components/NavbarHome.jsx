@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     removeCookie('cookieName'); // Reemplaza 'cookieName' con el nombre de tus cookies
+    console.log(cookies);
   
     // Redirecciona a la página deseada, por ejemplo '/login'
     navigate('/');
