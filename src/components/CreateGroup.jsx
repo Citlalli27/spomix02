@@ -8,9 +8,20 @@ import Member from "./Member";
 import ItemPL from "./ItemPL";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const CreateGroup = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (
+      localStorage.getItem("UI") == null ||
+      localStorage.getItem("AT") == null
+    ) {
+      setTimeout(() => {
+        return navigate("/");
+      }, 1000);
+    }
     getGroup();
   }, []);
 
