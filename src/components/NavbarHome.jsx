@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(['cookieName']);
+
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    removeCookie('cookieName'); // Reemplaza 'cookieName' con el nombre de tus cookies
+  
+    // Redirecciona a la página deseada, por ejemplo '/login'
+    navigate('/');
   };
 
   return (
@@ -25,6 +36,7 @@ const Navbar = () => {
           <button
             type="button"
             className="bg-indigo-900 text-white hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0"
+            onClick={handleLogout}
           >
             Logout
           </button>
